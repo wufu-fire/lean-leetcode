@@ -9,8 +9,7 @@
 
 
 思路：根据dict中，key的索引性能。
-首先，将数组的val和index，转化成dict的key和value
-其次，遍历数组，targe - num是否是dict中的key。
+遍历数组，targe - num是否是dict中的key。
 """
 
 class Solution(object):
@@ -22,14 +21,9 @@ class Solution(object):
         """
         obj = {}
         for i, num in enumerate(nums):
+            if obj.get(target - num) is not None:
+                return [obj.get(target - num), i]
             obj[num] = i
-            
-        for i ,num in enumerate(nums):
-            if target - num in obj:
-                r = obj[target - num]
-                if i != r:
-                    return [i, r]
-            
         
 nums = [2, 7, 11, 15]
 target = 9
